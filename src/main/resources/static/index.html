@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Mood Movie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+    <header>
+        <h1>Что посмотреть по настроению</h1>
+        <p>Выберите настроение, а сервис подберёт фильмы через TMDB.</p>
+    </header>
+
+    <section class="card auth-card">
+        <h2>Вход / регистрация</h2>
+
+        <div class="form-row">
+            <input id="username" placeholder="Имя пользователя">
+            <input id="email" placeholder="Email">
+            <input id="password" type="password" placeholder="Пароль">
+        </div>
+
+        <div class="buttons">
+            <button onclick="register()">Зарегистрироваться</button>
+            <button onclick="login()">Войти</button>
+            <button onclick="logout()">Выйти</button>
+        </div>
+
+        <p id="userInfo" class="status-text">Вы не вошли в систему</p>
+    </section>
+
+    <section class="card">
+        <h2>Выбор настроения</h2>
+
+        <div class="moods">
+            <button onclick="selectMood('HAPPY')" id="mood-HAPPY">
+                Весёлое
+                <span>Комедии, анимация, семейные фильмы</span>
+            </button>
+
+            <button onclick="selectMood('TENSE')" id="mood-TENSE">
+                Напряжённое
+                <span>Триллеры, криминал, детективы</span>
+            </button>
+
+            <button onclick="selectMood('DARK')" id="mood-DARK">
+                Мрачное
+                <span>Драмы, хорроры, мистические фильмы</span>
+            </button>
+        </div>
+
+        <button class="main-button" onclick="createSelection()">Подобрать фильмы</button>
+
+        <p id="selectionStatus" class="status-text"></p>
+    </section>
+
+    <section class="card">
+        <h2>Результаты</h2>
+        <div id="movies" class="movies"></div>
+    </section>
+
+    <section class="card">
+        <h2>История подборок</h2>
+        <button onclick="loadHistory()">Обновить историю</button>
+        <div id="history" class="history"></div>
+    </section>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

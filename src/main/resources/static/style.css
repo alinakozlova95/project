@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f1ec;
+    color: #222;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 36px;
+}
+
+header p {
+    color: #666;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+input {
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 18px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #222;
+    color: white;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.status-text {
+    color: #666;
+    margin-top: 14px;
+}
+
+.moods {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.moods button {
+    background: #eee;
+    color: #222;
+    text-align: left;
+    min-height: 100px;
+    font-weight: bold;
+}
+
+.moods button span {
+    display: block;
+    margin-top: 8px;
+    font-weight: normal;
+    color: #555;
+}
+
+.moods button.active {
+    background: #222;
+    color: white;
+}
+
+.moods button.active span {
+    color: #ddd;
+}
+
+.main-button {
+    margin-top: 18px;
+    width: 100%;
+    background: #7b3fe4;
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.movie-card {
+    border: 1px solid #eee;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    background: #ddd;
+}
+
+.movie-card-content {
+    padding: 14px;
+}
+
+.movie-card h3 {
+    margin: 0 0 8px;
+}
+
+.movie-card p {
+    color: #555;
+    font-size: 14px;
+}
+
+.history-item {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 12px;
+    background: #fafafa;
+}
+
+.history-item button {
+    margin-top: 10px;
+    margin-right: 8px;
+}
+
+@media (max-width: 800px) {
+    .form-row,
+    .moods {
+        grid-template-columns: 1fr;
+    }
+}
