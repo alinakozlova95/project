@@ -136,7 +136,7 @@ public class TmdbHttpClient {
         return result.toString();
     }
 
-    private List<TmdbMovieDto> parseMovies(String json) throws Exception {
+    List<TmdbMovieDto> parseMovies(String json) throws Exception {
         JsonNode root = objectMapper.readTree(json);
         JsonNode results = root.get("results");
 
