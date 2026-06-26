@@ -148,9 +148,20 @@ async function loadHistory() {
 }
 
 async function openSelection(id) {
+    if (!id) {
+        selectionStatus.textContent = "Ошибка: не найден id подборки";
+        return;
+    }
+
     const response = await fetch("/api/selections/" + id);
     const data = await response.json();
 
+    if (!response.ok || data.error) {
+        selectionStatus.textContent = "Ошибка открытия подборки: " + (data.error || "неизвестная ошибка");
+        return;
+    }
+
+    lastSelectionId = data.id;
     selectionStatus.textContent = "Открыта подборка #" + data.id;
     renderMovies(data.movies || []);
 }

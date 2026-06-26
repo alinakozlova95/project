@@ -18,6 +18,7 @@ import mephi.moodmovieapplication.strategy.MoodStrategyFactory;
 import mephi.moodmovieapplication.tmdb.MovieDataProvider;
 import mephi.moodmovieapplication.tmdb.TmdbSearchParameters;
 import java.time.LocalDateTime;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -47,6 +48,7 @@ public class SelectionFacade {
         this.jsonService = jsonService;
     }
 
+    @Transactional
     public SelectionResponse createSelection(CreateSelectionRequest request, Long userId) {
         if (request.mood() == null) {
             throw new GeneralAppException("Не выбрано настроение");
@@ -87,6 +89,7 @@ public class SelectionFacade {
         return selectionMapper.toResponse(savedSelection);
     }
 
+    @Transactional(readOnly = true)
     public List<SelectionResponse> getHistory(Long userId) {
         User user = registryService.getUserById(userId);
 
@@ -96,11 +99,13 @@ public class SelectionFacade {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     public SelectionResponse getSelection(Long selectionId, Long userId) {
         MovieSelection selection = findUserSelection(selectionId, userId);
         return selectionMapper.toResponse(selection);
     }
 
+    @Transactional
     public SelectionResponse saveSelection(Long selectionId, Long userId) {
         MovieSelection selection = findUserSelection(selectionId, userId);
         selection.setSaved(true);
@@ -109,13 +114,14 @@ public class SelectionFacade {
         return selectionMapper.toResponse(savedSelection);
     }
 
+    @Transactional
     public void deleteSelection(Long selectionId, Long userId) {
         MovieSelection selection = findUserSelection(selectionId, userId);
         movieSelectionRepository.delete(selection);
     }
 
     private MovieSelection findUserSelection(Long selectionId, Long userId) {
-        MovieSelection selection = movieSelectionRepository.findById(selectionId)
+        MovieSelection selection = movieSelectionRepository.findByIdWithMovies(selectionId)
                 .orElseThrow(() -> new GeneralAppException("Подборка не найдена"));
 
         if (!selection.getUser().getId().equals(userId)) {

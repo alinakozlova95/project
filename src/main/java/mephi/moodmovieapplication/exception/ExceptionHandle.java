@@ -25,8 +25,10 @@ public class ExceptionHandle {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleException(Exception exception) {
+        exception.printStackTrace();
+
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(Map.of("error", "Внутренняя ошибка приложения"));
+                .body(Map.of("error", "Внутренняя ошибка приложения: " + exception.getMessage()));
     }
 }

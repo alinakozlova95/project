@@ -39,21 +39,21 @@ public class SelectionController {
     }
 
     @GetMapping("/{id}")
-    public SelectionResponse getSelection(@PathVariable Long id,
+    public SelectionResponse getSelection(@PathVariable("id") Long id,
                                           HttpSession session) {
         Long userId = requireUserId(session);
         return selectionFacade.getSelection(id, userId);
     }
 
     @PostMapping("/{id}/save")
-    public SelectionResponse saveSelection(@PathVariable Long id,
+    public SelectionResponse saveSelection(@PathVariable("id") Long id,
                                            HttpSession session) {
         Long userId = requireUserId(session);
         return selectionFacade.saveSelection(id, userId);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSelection(@PathVariable Long id,
+    public void deleteSelection(@PathVariable("id") Long id,
                                 HttpSession session) {
         Long userId = requireUserId(session);
         selectionFacade.deleteSelection(id, userId);

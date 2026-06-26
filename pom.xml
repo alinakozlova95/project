@@ -13,10 +13,10 @@
     <description>Web service for movie recommendations by mood</description>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <spring.boot.version>3.3.5</spring.boot.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>mephi.moodmovieapplication.MoodMovieApplication</start-class>
     </properties>
